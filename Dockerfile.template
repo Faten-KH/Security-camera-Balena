@@ -1,6 +1,6 @@
 #FROM ubuntu:18.04
 FROM balenalib/%%BALENA_MACHINE_NAME%%
-LABEL maintainer="cal.loomis@gmail.com"
+LABEL maintainer="faten.khalfa@***"
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
@@ -14,16 +14,16 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-COPY . /root/pi-security-camera
+COPY . /root/Security-camera-Balena
 
 RUN pip3 install wheel
 
 #RUN python3 -m pip install python_secrets
 
-RUN pip3 install -r /root/pi-security-camera/requirements.txt
+RUN pip3 install -r /root/Security-camera-Balena/requirements.txt
 
-RUN chmod a+x /root/pi-security-camera/application.py
+RUN chmod a+x /root/Security-camera-Balena/application.py
 
-CMD ["python", "/root/pi-security-camera/application.py"]
+CMD ["python", "/root/Security-camera-Balena/application.py"]
 
 
