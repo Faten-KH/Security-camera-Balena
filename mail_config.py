@@ -12,7 +12,7 @@ fromEmailPassword = 'tape your password'
 # Email you want to send the update to
 toEmail = 'tape your receiver e-mail'
 
-def sendEmail(image):
+def send_email(image):
 	msgRoot = MIMEMultipart('related')
 	msgRoot['Subject'] = 'Security Update'
 	msgRoot['From'] = fromEmail
