@@ -1,5 +1,5 @@
 from __future__ import print_function
-import cv2
+import cv2 
 
 
 class Singleton(type):
@@ -55,6 +55,9 @@ class Config(object):
             self.classifier2 = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
 
     email_send_interval = 60
+    toEmail = 'm.issam.limem@gmail.com'
+    fromEmail = 'etudiantefaten@gmail.com'
+    fromEmailPassword = 'YASSINE2018MOHAMED2017MOKH2021'
 
     def to_string(self):
         attributes = vars(self)

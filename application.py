@@ -39,7 +39,7 @@ def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
         print("Detected object: %s" % camera_id)
         if (time.time() - last_epoch) > int(config.email_send_interval):
             last_epoch = time.time()
-            print("Sending email to " + config.receiver_email_address + "...")
+            print("Sending email to " + config.toEmail + "...")
             send_email(frame, config)
             print("done!")
     return last_epoch
@@ -64,7 +64,7 @@ def index():
             receiver_email_address = request.form['receiver_email_address']
             if receiver_email_address:
                 print("setting config.receiver_email_address to " + receiver_email_address)
-                config.receiver_email_address = receiver_email_address
+                config.toEmail = receiver_email_address
 
             email_send_interval = request.form['email_send_interval']
             if email_send_interval: config.email_send_interval = email_send_interval
@@ -73,8 +73,8 @@ def index():
             sender_email_address = request.form['sender_email_address']
             sender_email_password = request.form['sender_email_password']
             if sender_email_address and sender_email_password:
-                config.sender_email_address = sender_email_address
-                config.sender_email_password = sender_email_password
+                config.fromEmail = sender_email_address
+                config.fromEmailPassword = sender_email_password
 
         config.to_string()
 

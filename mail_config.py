@@ -4,19 +4,19 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 # Email you want to send the update from (only works with gmail)
-fromEmail = 'tape your sender e-mail'
+#fromEmail = 'faten.khalfa@isimg.tn'
 # You can generate an app password here to avoid storing your password in plain text
 # https://support.google.com/accounts/answer/185833?hl=en
-fromEmailPassword = 'tape your password'
+#fromEmailPassword = 'allahALLAH123'
 
 # Email you want to send the update to
-toEmail = 'tape your receiver e-mail'
+#toEmail = 'm.issam.limem@gmail.com'
 
-def send_email(image):
+def send_email(image, config):
 	msgRoot = MIMEMultipart('related')
 	msgRoot['Subject'] = 'Security Update'
-	msgRoot['From'] = fromEmail
-	msgRoot['To'] = toEmail
+	msgRoot['From'] = config.fromEmail
+	msgRoot['To'] = config.toEmail
 	msgRoot.preamble = 'Raspberry pi security camera update'
 
 	msgAlternative = MIMEMultipart('alternative')
@@ -33,6 +33,6 @@ def send_email(image):
 
 	smtp = smtplib.SMTP('smtp.gmail.com', 587)
 	smtp.starttls()
-	smtp.login(fromEmail, fromEmailPassword)
-	smtp.sendmail(fromEmail, toEmail, msgRoot.as_string())
+	smtp.login(config.fromEmail, config.fromEmailPassword)
+	smtp.sendmail(config.fromEmail, config.toEmail, msgRoot.as_string())
 	smtp.quit()
