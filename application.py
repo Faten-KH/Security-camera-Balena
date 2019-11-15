@@ -25,7 +25,7 @@ def check_for_objects():
     last_epoch = 0
     while True:
         if config.send_email_notifications:
-            if config.classifier_name == 'motion_detector':
+            if config.classifier_name == 'face_detection':
                 frame, found_obj = video_camera_1.get_object_with_basic_motion_detection()
             else:
                 frame, found_obj = video_camera_1.get_object(config.classifier)
@@ -84,7 +84,7 @@ def index():
 def gen(camera):
     while True:
         try:
-            if config.classifier_name == 'motion_detector':
+            if config.classifier_name == 'face_detection':
                 frame, found_obj = camera.get_object_with_basic_motion_detection()
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')

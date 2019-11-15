@@ -18,7 +18,7 @@ class Config(object):
     send_email_notifications = False
 
     classifierNameLocationDict = {
-        'motion_detector': {'description': 'Motion detector'},
+#        'motion_detector': {'description': 'Motion detector'},
 
         # Face
         'face_detection': {'description': 'Face detection (haarcascade)',
@@ -41,13 +41,13 @@ class Config(object):
                                   'location': 'models/lbp/lbpcascade_silverware.xml'}
     }
     
-    classifier_name = 'motion_detector'
+    classifier_name = 'face_detection'
     classifier = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
     classifier2 = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
 
     def set_classifier(self, classifier_name):
         self.classifier_name = classifier_name
-        if classifier_name == 'motion_detector':
+        if classifier_name == 'face_detection':
             self.classifier = None
             self.classifier2 = None
         else:
