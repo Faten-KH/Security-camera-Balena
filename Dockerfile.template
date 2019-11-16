@@ -1,6 +1,6 @@
 #FROM ubuntu:18.04
 FROM balenalib/%%BALENA_MACHINE_NAME%%
-LABEL maintainer="cal.loomis@gmail.com"
+LABEL maintainer="faten.khalfa@***"
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
